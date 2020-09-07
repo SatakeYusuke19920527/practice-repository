@@ -20,6 +20,9 @@ const App: FC = () => {
   useEffect(() => {
     console.log('in useEffect')
     setFiles(acceptedFiles)
+    if (acceptedFiles.length !== 0) {
+      console.log('open modal')
+    }
   }, [acceptedFiles])
 
   return (
@@ -29,9 +32,9 @@ const App: FC = () => {
         <p>Drag 'n' drop some files here, or click to select files</p>
       </div>
       {
-        files.map(data => {
+        files.map((data, index) => {
           return (
-            <div>{data.name}</div>
+            <div key={index}>{data.name} / {data.size} kb</div>
           )
         })
       }
